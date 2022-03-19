@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta25
+kind: Config
+metadata:
+  name: flask-k-s
+build:
+  artifacts:
+  - image: test-api
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    defaultNamespace: dev
+    manifests:
+    - hello-deployment.yaml
