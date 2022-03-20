@@ -9,6 +9,8 @@ build:
       dockerfile: Dockerfile
 deploy:
   kubectl:
-    defaultNamespace: dev
     manifests:
     - hello-deployment.yaml
+    - hello-service.yaml
+    - test-ingress.yaml
+    - test/test-ingress.yaml
