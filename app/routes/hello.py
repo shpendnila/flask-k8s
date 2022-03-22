@@ -13,5 +13,8 @@ def check_health():
 
 @hello_route.route('/hello')
 def hello():
-    response = requests.get("http://localhost/web")
-    return response.content
+    # get response from nginx controller
+    resp = requests.get(
+        'http://ingress-nginx-controller.ingress-nginx/web'
+    )
+    return resp.content
