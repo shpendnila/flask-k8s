@@ -1,3 +1,9 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -37,7 +43,7 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Unit scripts / coverage reports
 htmlcov/
 .tox/
 .nox/
