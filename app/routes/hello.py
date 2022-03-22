@@ -1,18 +1,31 @@
-from flask import Blueprint, jsonify
+from flask import (
+    Blueprint,
+    Response,
+    jsonify,
+)
 import requests
 
-hello_route = Blueprint('hello', __name__)
+hello_router = Blueprint('hello', __name__)
 
 
-@hello_route.route('/health')
+@hello_router.route('/health')
 def check_health():
     return jsonify(
         {"message": "OK"}
     )
 
 
-@hello_route.route('/hello')
+@hello_router.route('/hello')
 def hello():
+    return Response(
+        response=jsonify({"message": "Hello from k8s!"}),
+        status=200,
+        content_type="application/json",
+    )
+
+
+@hello_router.route('/check_web')
+def get_web_info():
     # get response from nginx controller
     resp = requests.get(
         'http://ingress-nginx-controller.ingress-nginx/web'
