@@ -11,7 +11,7 @@ deployments:
 	skaffold run
 
 delete_cluster:
-	kind delete cluster --name kind-cluster
+	kind delete cluster --name dev-cluster
 
 cleanup:
 	./scripts/delete-ingress-controller.sh
