@@ -28,7 +28,7 @@ def hello():
 @hello_router.route('/check_web')
 def get_web_info():
     # get response from nginx controller
-    resp = requests.get(
-        'http://ingress-nginx-controller.ingress-nginx/health'
+    hello_resp = requests.get(
+        "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/hello"
     )
-    return resp.content
+    return hello_resp.content
