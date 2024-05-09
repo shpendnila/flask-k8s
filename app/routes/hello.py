@@ -3,6 +3,7 @@ from flask import (
     Response,
     jsonify,
 )
+import json
 import requests
 
 hello_router = Blueprint('hello', __name__)
@@ -18,9 +19,9 @@ def check_health():
 @hello_router.route('/hello')
 def hello():
     return Response(
-        response=jsonify({"message": "Hello from k8s!"}),
-        status=200,
-        content_type="application/json",
+        response= json.dumps({"message": "Hello from k8s!"}),
+        status= 200,
+        content_type= "application/json",
     )
 
 
@@ -28,6 +29,6 @@ def hello():
 def get_web_info():
     # get response from nginx controller
     resp = requests.get(
-        'http://ingress-nginx-controller.ingress-nginx/web'
+        'http://ingress-nginx-controller.ingress-nginx/health'
     )
     return resp.content
